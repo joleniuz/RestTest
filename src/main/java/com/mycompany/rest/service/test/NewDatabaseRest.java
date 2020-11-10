@@ -18,15 +18,15 @@ public class NewDatabaseRest {
     
     
     @GET
-    @Path("hello")
+    @Path("test")
     public String helloWorld(){
-        return "Hello WHO DIS";
+        return "Ni kan ju det här!";
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getJson(){
         List<ActorDTO> actors = new ActorDAO().getActors();
-        return Response.ok(actors).build();
+        return Response.ok(actors).build();    
     }
 }

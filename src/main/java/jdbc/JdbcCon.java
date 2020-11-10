@@ -21,7 +21,7 @@ public class JdbcCon {
             
             try {
             
-            String url       = "jdbc:mysql://127.0.0.1:3306/mynewdatabase?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String url       = "jdbc:mysql://127.0.0.1:3306/mynewdatabase?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
             String user      = "root";
             String password  = "sqladmin";
 
@@ -29,8 +29,7 @@ public class JdbcCon {
             conn = DriverManager.getConnection(url, user, password);
             
             System.out.println("uppkopplad");
-            // more processing here
-            // ...	
+         	
             } catch(SQLException e) {
                 System.out.println(e.getMessage());
                 System.out.println("inte uppkopplad");

@@ -29,10 +29,11 @@ public class ActorDAO {
         
         ActorDTO actorDto = null;
         List<ActorDTO> actors = new ArrayList<ActorDTO>();
+        JdbcCon db = new JdbcCon();
         
         try{
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            con = JdbcCon.openConnection();
+            con = db.openConnection();
             ps = con.prepareStatement(GET_DATA);
             rs = ps.executeQuery();
             
