@@ -16,7 +16,6 @@ import java.util.List;
 @Path("actors")
 public class NewDatabaseRest {
     
-    
     @GET
     @Path("test")
     public String helloWorld(){
@@ -29,4 +28,13 @@ public class NewDatabaseRest {
         List<ActorDTO> actors = new ActorDAO().getActors();
         return Response.ok(actors).build();    
     }
+    
+    @Path("{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getActorById(@PathParam("id") int actorId){
+        ActorDTO actor = new ActorDAO().getActorById(actorId);
+        return Response.ok(actor).build();
+    }
+    
 }

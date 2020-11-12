@@ -24,6 +24,8 @@ public class JdbcConTest {
     
         List<ActorDTO> actors = new ActorDAO().getActors();
         
+        //ActorDTO actor = new ActorDAO().getActorById(1);
+        
     }
     
 }

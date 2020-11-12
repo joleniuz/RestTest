@@ -19,7 +19,8 @@ import jdbc.JdbcCon;
  */
 public class ActorDAO {
     
-    private final String GET_DATA = "SELECT counselor_id, first_name, last_name FROM counselor";
+    private final String GET_ACTORS = "SELECT * FROM counselor";
+    private final String GET_ACTOR_BY_ID = "SELECT * FROM counselor WHERE counselor_id=?";
     
     Connection con = null;
     PreparedStatement ps = null;
@@ -34,19 +35,22 @@ public class ActorDAO {
         try{
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             con = db.openConnection();
-            ps = con.prepareStatement(GET_DATA);
+            ps = con.prepareStatement(GET_ACTORS);
             rs = ps.executeQuery();
             
             while(rs.next()){
                 actorDto = new ActorDTO();
-                actorDto.setCounselorID(rs.getString(1));
+                System.out.println(rs);
+                actorDto.setCounselorID(rs.getInt(1));
                 actorDto.setFirsName(rs.getString(2));
-                actorDto.setLastName(rs.getString(3));
+                actorDto.setNickName(rs.getString(3));
+                actorDto.setLastName(rs.getString(4));
+                actorDto.setTelephone(rs.getString(5));
+                actorDto.setEmail(rs.getString(6));
+                actorDto.setMemberSince(rs.getString(7));
                 actors.add(actorDto);
                 
                 System.out.println(actorDto.getCounselorID());
-                System.out.println(actorDto.getFirsName());
-                System.out.println(actorDto.getLastName());
                 
             }
             
@@ -54,5 +58,36 @@ public class ActorDAO {
             e.printStackTrace();
         }
         return actors;
+    }
+    
+    public ActorDTO getActorById(int actorId){
+        
+        ActorDTO actor = null;
+        JdbcCon db = new JdbcCon();
+        
+        try{
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+            con = db.openConnection();
+            ps = con.prepareStatement(GET_ACTOR_BY_ID);
+            ps.setInt(1, actorId);
+            rs = ps.executeQuery();
+            
+            actor = new ActorDTO();
+            actor.setCounselorID(rs.getInt(1));
+            actor.setFirsName(rs.getString(2));
+            actor.setNickName(rs.getString(3));
+            actor.setLastName(rs.getString(4));
+            actor.setTelephone(rs.getString(5));
+            actor.setEmail(rs.getString(6));
+            actor.setMemberSince(rs.getString(7));
+            
+            System.out.println("actor");
+            System.out.println(actor);
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return actor;
     }
 }
