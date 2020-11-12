@@ -29,6 +29,7 @@ public class NewDatabaseRest {
         return Response.ok(actors).build();    
     }
     
+    //exempel: http://localhost:8080/rest-service-test/mynewdatabase/actors/1
     @Path("{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,6 +38,7 @@ public class NewDatabaseRest {
         return Response.ok(actor).build();
     }
     
+    //exempel: http://localhost:8080/rest-service-test/mynewdatabase/actors/query?id=1
     @Path("/query")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
