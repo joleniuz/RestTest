@@ -22,9 +22,9 @@ public class JdbcConTest {
         
         JdbcCon db = new JdbcCon();
     
-        List<ActorDTO> actors = new ActorDAO().getActors();
+        //List<ActorDTO> actors = new ActorDAO().getActors();
         
-        //ActorDTO actor = new ActorDAO().getActorById(1);
+        ActorDTO actor = new ActorDAO().getActorById(1);
         
     }
     

@@ -40,18 +40,16 @@ public class ActorDAO {
             
             while(rs.next()){
                 actorDto = new ActorDTO();
-                System.out.println(rs);
                 actorDto.setCounselorID(rs.getInt(1));
                 actorDto.setFirsName(rs.getString(2));
+                System.out.println(rs.getString(2));
                 actorDto.setNickName(rs.getString(3));
                 actorDto.setLastName(rs.getString(4));
                 actorDto.setTelephone(rs.getString(5));
                 actorDto.setEmail(rs.getString(6));
                 actorDto.setMemberSince(rs.getString(7));
                 actors.add(actorDto);
-                
-                System.out.println(actorDto.getCounselorID());
-                
+                  
             }
             
         }catch(Exception e){
@@ -72,6 +70,7 @@ public class ActorDAO {
             ps.setInt(1, actorId);
             rs = ps.executeQuery();
             
+            if(rs.next()){
             actor = new ActorDTO();
             actor.setCounselorID(rs.getInt(1));
             actor.setFirsName(rs.getString(2));
@@ -81,9 +80,9 @@ public class ActorDAO {
             actor.setEmail(rs.getString(6));
             actor.setMemberSince(rs.getString(7));
             
-            System.out.println("actor");
-            System.out.println(actor);
-            
+            }
+
+  
         }catch(Exception e){
             e.printStackTrace();
         }
