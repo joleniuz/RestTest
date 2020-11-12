@@ -37,4 +37,12 @@ public class NewDatabaseRest {
         return Response.ok(actor).build();
     }
     
+    @Path("/query")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getActorByQueryParam(@QueryParam("id") int actorId){
+        ActorDTO actor = new ActorDAO().getActorById(actorId);
+        return Response.ok(actor).build();
+    }
+    
 }

@@ -80,9 +80,9 @@ public class ActorDAO {
             actor.setEmail(rs.getString(6));
             actor.setMemberSince(rs.getString(7));
             
+            System.out.println(rs.getString(2));
             }
 
-  
         }catch(Exception e){
             e.printStackTrace();
         }
